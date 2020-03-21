@@ -32,19 +32,16 @@ matrix:
         - python -m pip install --upgrade pip
         - python -m pip install --upgrade pytest
         - python --version
-        - python3 --version
         - pip --version
-        - pip3 --version
         - cmake --version
         - swig -version
       env: PATH=/c/Python35:/c/Python35/Scripts:$PATH
 
 before_install:
-  - pip3 install -U pip
-  - pip3 install -U pytest
+  - python -m pip install -U pip
+  - python -m pip install -U pytest
 install:
   - python setup.py install
-  # - python3 -m pip install .
 script: python3 -m pytest
 
 
