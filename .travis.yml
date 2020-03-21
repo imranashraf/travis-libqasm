@@ -3,22 +3,22 @@ cache: pip
 
 matrix:
   include:      
-    # - name: "Python 3.7 on macOS 10.14"
-    #   os: osx
-    #   osx_image: xcode11.3
-    #   language: shell
-    #   env:
-    #     - export PATH="/usr/local/opt/flex/bin:$PATH"
-    #     - export LDFLAGS="-L/usr/local/opt/flex/lib:$LDFLAGS"
-    #     - export CPPFLAGS="-I/usr/local/opt/flex/include:$CPPFLAGS"
-    #     - export PATH="/usr/local/opt/bison/bin:$PATH"
-    #     - export LDFLAGS="-L/usr/local/opt/bison/lib:$LDFLAGS"
+    - name: "Python 3.7 on macOS 10.14"
+      os: osx
+      osx_image: xcode11.3
+      language: shell
+      env:
+        - export PATH="/usr/local/opt/flex/bin:$PATH"
+        - export LDFLAGS="-L/usr/local/opt/flex/lib:$LDFLAGS"
+        - export CPPFLAGS="-I/usr/local/opt/flex/include:$CPPFLAGS"
+        - export PATH="/usr/local/opt/bison/bin:$PATH"
+        - export LDFLAGS="-L/usr/local/opt/bison/lib:$LDFLAGS"
 
-    # - name: "Python 3.7 on xenial"
-    #   os: linux
-    #   dist: xenial
-    #   language: python
-    #   python: 3.7
+    - name: "Python 3.7 on xenial"
+      os: linux
+      dist: xenial
+      language: python
+      python: 3.7
 
     - name: "Python 3.5.4 on Windows"
       os: windows
@@ -42,7 +42,7 @@ before_install:
   - python -m pip install -U pytest
 install:
   - python setup.py install
-script: python3 -m pytest
+script: python -m pytest
 
 
 addons:
