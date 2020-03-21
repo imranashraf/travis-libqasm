@@ -30,8 +30,9 @@ matrix:
         - choco install cmake
         - choco install mingw
         - python -m pip install --upgrade pip
-        - pip3 install --upgrade pytest
+        - python -m pip install --upgrade pytest
         - python --version
+        - python3 --version
         - pip --version
         - pip3 --version
         - cmake --version
@@ -39,11 +40,10 @@ matrix:
       env: PATH=/c/Python35:/c/Python35/Scripts:$PATH
 
 before_install:
-  - python3 --version
   - pip3 install -U pip
   - pip3 install -U pytest
 install:
-  - python3 setup.py install
+  - python setup.py install
   # - python3 -m pip install .
 script: python3 -m pytest
 
