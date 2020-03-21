@@ -68,6 +68,8 @@ def build_libqasm_library(make_command: str, cmake_options: str) -> None:
     execute_process('git submodule update --init --recursive')
     execute_process('cmake {cmake_options} {os.path.join("..", "library")}')
     execute_process('{make_command}')
+    execute_process('ls libqasm_dir: {libqasm_dir}')
+    execute_process('ls build_dir: {build_dir}')
     execute_process('{make_command} test')
     os.chdir(root_dir)
 
@@ -132,7 +134,7 @@ setup(name='libQasm',
       author_email='kel85uk@gmail.com',
       url="https://www.github.com/QE-Lab/libqasm/",
       version='0.0.1',
-      python_requires='>=3.6',
+      python_requires='>=3.5',
       packages=['libQasm'],
       package_dir={'': 'src'},
       package_data={'libQasm': [clib, liblexgram]},
