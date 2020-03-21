@@ -68,11 +68,16 @@ def build_libqasm_library(make_command: str, cmake_options: str) -> None:
     # cmd = 'make -j{}'.format(nprocs)
     cmd = 'git submodule update --init --recursive'
     execute_process(cmd)
-    execute_process(f'cmake {cmake_options} {os.path.join("..", "library")}')
-    execute_process(f'{make_command}')
-    execute_process(f'ls {libqasm_dir}')
-    execute_process(f'ls {build_dir}')
-    execute_process(f'{make_command} test')
+    cmd = 'cmake {} {}'.format(cmake_options, os.path.join("..", "library"))
+    execute_process(cmd)
+    cmd = make_command
+    execute_process(cmd)
+    cmd = 'ls {}'.format(libqasm_dir)
+    execute_process(cmd)
+    cmd = 'ls {}'.format(build_dir)
+    execute_process(cmd)
+    cmd = '{} test'.format(make_command)
+    execute_process(cmd)
     os.chdir(root_dir)
 
 
