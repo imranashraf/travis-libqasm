@@ -65,12 +65,12 @@ def build_libqasm_library(make_command: str, cmake_options: str) -> None:
         cmake_options: additional build options to pass to cmake.
     """
     os.chdir(build_dir)
-    execute_process('git submodule update --init --recursive')
-    execute_process('cmake {cmake_options} {os.path.join("..", "library")}')
-    execute_process('{make_command}')
-    execute_process('ls libqasm_dir: {libqasm_dir}')
-    execute_process('ls build_dir: {build_dir}')
-    execute_process('{make_command} test')
+    execute_process(f'git submodule update --init --recursive')
+    execute_process(f'cmake {cmake_options} {os.path.join("..", "library")}')
+    execute_process(f'{make_command}')
+    execute_process(f'ls {libqasm_dir}')
+    execute_process(f'ls {build_dir}')
+    execute_process(f'{make_command} test')
     os.chdir(root_dir)
 
 
